@@ -1,26 +1,36 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <the-sidebar></the-sidebar>
+  <base-card>
+    Add field group
+  </base-card>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import TheSidebar from './components/admin/TheSidebar.vue';
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    TheSidebar
   }
 }
 </script>
 
 <style>
+body {
+  margin: 0;
+}
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  color: white;
+  background: rgb(48, 48, 48);
+  height: 100vh;
+}
+ul {
+  margin-block-start: 0;
+  /* padding-inline-start: 0; */
 }
 </style>
