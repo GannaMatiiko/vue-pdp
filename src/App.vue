@@ -1,17 +1,19 @@
 <template>
   <the-sidebar></the-sidebar>
   <base-card>
-    Add field group
+     <font-awesome-icon icon="plus" /> <span>Add field group</span>
   </base-card>
 </template>
 
 <script>
 import TheSidebar from './components/admin/TheSidebar.vue';
+import BaseCard from './components/UI/BaseCard.vue';
 
 export default {
   name: 'App',
   components: {
-    TheSidebar
+    TheSidebar,
+    BaseCard
   }
 }
 </script>
@@ -32,5 +34,8 @@ body {
 ul {
   margin-block-start: 0;
   /* padding-inline-start: 0; */
+}
+span {
+  margin-left: 5px;
 }
 </style>
