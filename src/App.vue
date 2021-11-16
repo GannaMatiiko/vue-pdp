@@ -1,42 +1,63 @@
 <template>
   <the-sidebar></the-sidebar>
-  <base-card @click="chooseFieldType">
+  <div class="form-group">
+      <label for="title">Title for your form group</label>
+      <input type="text" v-model="groupTitle" id="title">
+  </div>
+  <hr>
+  <base-card @click="showFieldsForm">
      <font-awesome-icon icon="plus" /> <span>Add field group</span>
   </base-card>
   <br>
-  <groupfield-select v-if="isSelectVisible" @select-type="logSelectType"></groupfield-select>
-  <keep-alive>
-    <component :is="selectedComponent"></component>
-  </keep-alive>
+  <form>
+    <div v-for="comp in components" :key="comp">
+      <component :is="comp"></component>
+    </div>
+    <button @click.prevent="saveTextFields" v-if="components.length">Save</button>
+  </form>
+
 </template>
 
 <script>
 import TheSidebar from './components/admin/TheSidebar.vue';
 import BaseCard from './components/UI/BaseCard.vue';
-import GroupfieldSelect from './components/admin/GroupfieldSelect.vue';
-import Text from './components/admin/fields/Text.vue';
+// import GroupfieldSelect from './components/admin/GroupfieldSelect.vue';
+import FieldsPattern from './components/admin/fields/FieldsPattern.vue';
+// import Text from './components/admin/fields/Text.vue';
 
 export default {
   name: 'App',
   components: {
     TheSidebar,
     BaseCard,
-    GroupfieldSelect,
-    Text
+    // GroupfieldSelect,
+    FieldsPattern,
+    // Text
   },
   data() {
     return {
-      isSelectVisible: false,
-      selectedComponent: 'Text'
+      groupTitle: null,
+      components: [],
+      fieldsStructureArray: [],
+      inputsTextInfo: {
+        label: '',
+        name: '',
+        type: '',
+        hint: '',
+        isRequired: 'yes',
+        default: ''
+      },
     }
   },
   methods: {
-    chooseFieldType() {
-      return this.isSelectVisible = true;
+    showFieldsForm() {
+      this.components.push('fields-pattern');
+      // return this.isFormFieldsVisible = true;
     },
-    logSelectType(data) {
-      console.log('gchdgh', data);
-      this.selectedComponent = data;
+    saveTextFields() {
+      console.log(this.inputsTextInfo);
+      this.fieldsStructureArray.push(this.inputsTextInfo);
+      console.log(this.fieldsStructureArray);
     }
   },
   computed: {
