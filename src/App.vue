@@ -11,8 +11,9 @@
   <br>
   <form>
     <div v-for="comp in components" :key="comp">
-      <component :is="comp"></component>
+      <component :is="comp" @inputChanged="handleChange" ref="markdowndetails"></component>
     </div>
+    <!-- <button @click.prevent="saveTextFields" v-if="components.length">Save</button> -->
     <button @click.prevent="saveTextFields" v-if="components.length">Save</button>
   </form>
 
@@ -54,10 +55,15 @@ export default {
       this.components.push('fields-pattern');
       // return this.isFormFieldsVisible = true;
     },
+    handleChange(data) {
+      console.log(data);
+    },
     saveTextFields() {
-      console.log(this.inputsTextInfo);
-      this.fieldsStructureArray.push(this.inputsTextInfo);
-      console.log(this.fieldsStructureArray);
+      // console.log(this.inputsTextInfo);
+      // this.fieldsStructureArray.push(this.inputsTextInfo);
+      // console.log(this.fieldsStructureArray);
+      var markdowns = this.$refs.markdowndetails.$data;
+      console.log('markdowns', markdowns)
     }
   },
   computed: {
