@@ -14,7 +14,7 @@
       <component :is="comp" @inputChanged="handleChange" ref="markdowndetails"></component>
     </div>
     <!-- <button @click.prevent="saveTextFields" v-if="components.length">Save</button> -->
-    <button @click.prevent="saveTextFields" v-if="components.length">Save</button> 
+    <button @click.prevent="saveTextFields" v-if="components.length">Save</button>  
   </form>
 
 </template>
